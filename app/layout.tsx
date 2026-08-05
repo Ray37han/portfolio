@@ -4,15 +4,46 @@ import { SmoothScrollProvider } from '@/components/providers/smooth-scroll';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Rayhan — Full-stack developer',
+  metadataBase: new URL('https://rhrayhan.me'),
+  title: 'Rakibul Hasan Rayhan — Full-Stack Developer',
   description:
-    'Rakibul Hasan Rayhan — Full-stack developer, CSE student, and builder of thoughtful digital products.',
-  keywords: ['Full Stack Developer', 'React', 'Next.js', 'MERN', 'Bangladesh', 'RUET', 'CSE'],
-  authors: [{ name: 'Rakibul Hasan Rayhan' }],
+    'CSE student at RUET and full-stack developer building calm, useful products with MERN, Flutter, and modern web technologies.',
+  keywords: [
+    'Full Stack Developer', 'MERN Stack', 'React', 'Next.js',
+    'Node.js', 'MongoDB', 'Flutter', 'Bangladesh', 'RUET', 'CSE',
+    'Rakibul Hasan Rayhan', 'rhrayhan',
+  ],
+  authors: [{ name: 'Rakibul Hasan Rayhan', url: 'https://rhrayhan.me' }],
+  creator: 'Rakibul Hasan Rayhan',
+  robots: { index: true, follow: true },
+  alternates: { canonical: 'https://rhrayhan.me' },
+
   openGraph: {
-    title: 'Rayhan — Full-stack developer',
-    description: 'Building scalable digital products with the MERN stack.',
     type: 'website',
+    url: 'https://rhrayhan.me',
+    siteName: 'Rakibul Hasan Rayhan',
+    title: 'Rakibul Hasan Rayhan — Full-Stack Developer',
+    description:
+      'Full-stack developer building scalable digital products with MERN, Flutter, and modern web tech. CSE @ RUET, Bangladesh.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Rakibul Hasan Rayhan — Full-Stack Developer',
+      },
+    ],
+    locale: 'en_US',
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    site: '@rhrayhan',
+    creator: '@rhrayhan',
+    title: 'Rakibul Hasan Rayhan — Full-Stack Developer',
+    description:
+      'Full-stack developer building scalable digital products with MERN, Flutter, and modern web tech.',
+    images: ['/og-image.png'],
   },
 };
 
