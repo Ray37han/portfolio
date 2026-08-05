@@ -1233,7 +1233,6 @@ export default function Portfolio() {
                     width={340}
                     height={380}
                     style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }}
-                    priority={true as unknown as undefined}
                   />
                 </div>
                 {/* Floating badge */}
