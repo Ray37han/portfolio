@@ -151,17 +151,17 @@ function TypingText() {
 export function HeroSection() {
   const reduceMotion = useReducedMotion();
 
-  const container = {
+  const container: import('framer-motion').Variants = {
     hidden: {},
-    show: { transition: { staggerChildren: 0.12 } },
+    show: { transition: { staggerChildren: reduceMotion ? 0 : 0.12 } },
   };
 
-  const item = reduceMotion
-    ? {}
-    : {
-        hidden: { opacity: 0, y: 32 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
-      };
+  const item: import('framer-motion').Variants = {
+    hidden: reduceMotion ? {} : { opacity: 0, y: 32 },
+    show: reduceMotion
+      ? {}
+      : { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+  };
 
   return (
     <section

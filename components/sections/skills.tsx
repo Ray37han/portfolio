@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 import { SKILLS } from '@/lib/data';
 
 export function SkillsSection() {
-  const [activeCategory, setActiveCategory] = useState(SKILLS[0].category);
+  const [activeCategory, setActiveCategory] = useState<typeof SKILLS[number]['category']>(SKILLS[0].category);
   const activeGroup = SKILLS.find((s) => s.category === activeCategory)!;
 
   return (
