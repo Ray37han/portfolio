@@ -1,0 +1,68 @@
+<div id="rayhan-hero-directions">
+  <style>
+    #rayhan-hero-directions {
+      color: light-dark(#201d18, #e8e5de);
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    }
+    #rayhan-hero-directions .rd-kicker {
+      color: #d9a858;
+      font: 500 11px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    #rayhan-hero-directions h2 { margin: 9px 0 6px; font-size: 26px; letter-spacing: -.04em; }
+    #rayhan-hero-directions .rd-sub { margin: 0 0 22px; color: light-dark(#665f55, #a8a7a2); }
+    #rayhan-hero-directions .rd-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    #rayhan-hero-directions .rd-card {
+      appearance: none; width: 100%; overflow: hidden; padding: 0; border: 1px solid rgba(232,229,222,.14); border-radius: 16px;
+      color: #e8e5de; background: #111315; text-align: left; cursor: pointer; transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+    #rayhan-hero-directions .rd-card:hover, #rayhan-hero-directions .rd-card:focus-visible { transform: translateY(-3px); border-color: #d9a858; box-shadow: 0 13px 34px rgba(0,0,0,.28); outline: none; }
+    #rayhan-hero-directions .rd-card.selected { border-color: #e9ba6b; box-shadow: 0 0 0 2px rgba(217,168,88,.28); }
+    #rayhan-hero-directions .rd-preview { position: relative; min-height: 202px; overflow: hidden; background: #090b0d; }
+    #rayhan-hero-directions .rd-card-body { padding: 15px 16px 17px; }
+    #rayhan-hero-directions .rd-name { display: flex; justify-content: space-between; gap: 8px; align-items: center; font-size: 16px; font-weight: 600; }
+    #rayhan-hero-directions .rd-tag { color: #d9a858; font: 500 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .08em; text-transform: uppercase; }
+    #rayhan-hero-directions .rd-card p { margin: 7px 0 0; color: #aaa9a3; font-size: 13px; line-height: 1.45; }
+    #rayhan-hero-directions .rd-a-glow, #rayhan-hero-directions .rd-b-glow, #rayhan-hero-directions .rd-c-glow { position: absolute; width: 180px; height: 180px; border-radius: 50%; filter: blur(25px); opacity: .42; }
+    #rayhan-hero-directions .rd-a-glow { top: -35px; right: -45px; background: #be8134; }
+    #rayhan-hero-directions .rd-a-stage { position: absolute; inset: 31px 26px 0; transform: perspective(520px) rotateX(59deg) rotateZ(-8deg); transform-style: preserve-3d; }
+    #rayhan-hero-directions .rd-a-layer { position: absolute; left: 5%; width: 90%; height: 35px; border: 1px solid rgba(232,229,222,.55); background: linear-gradient(105deg, rgba(217,168,88,.36), rgba(83,220,195,.14)); box-shadow: 0 9px 24px rgba(0,0,0,.36); }
+    #rayhan-hero-directions .rd-a-layer:nth-child(1) { top: 0; transform: translateZ(12px); }
+    #rayhan-hero-directions .rd-a-layer:nth-child(2) { top: 46px; transform: translateZ(4px); border-color: rgba(83,220,195,.62); }
+    #rayhan-hero-directions .rd-a-layer:nth-child(3) { top: 92px; transform: translateZ(-8px); }
+    #rayhan-hero-directions .rd-a-layer span { display: block; padding: 9px 11px; color: #ebe8df; font: 500 9px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .12em; }
+    #rayhan-hero-directions .rd-b-glow { inset: 18px auto auto 50%; transform: translateX(-50%); background: #50cfbc; }
+    #rayhan-hero-directions .rd-orbit { position: absolute; width: 140px; height: 140px; border: 1px solid rgba(83,220,195,.55); border-radius: 50%; left: 50%; top: 50%; transform: translate(-50%, -50%) rotateX(68deg) rotateZ(18deg); }
+    #rayhan-hero-directions .rd-orbit::before, #rayhan-hero-directions .rd-orbit::after { content: ''; position: absolute; border: 1px solid rgba(217,168,88,.48); border-radius: 50%; inset: 22px -15px; transform: rotateZ(57deg); }
+    #rayhan-hero-directions .rd-orbit::after { transform: rotateZ(-57deg); }
+    #rayhan-hero-directions .rd-monogram { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -52%); color: #efece5; font: italic 68px/1 Georgia, serif; text-shadow: 0 0 28px rgba(217,168,88,.42); }
+    #rayhan-hero-directions .rd-orbit-label { position: absolute; inset: auto 0 17px; color: #c9c5bc; text-align: center; font: 500 9px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .16em; }
+    #rayhan-hero-directions .rd-c-glow { right: -15px; top: 18px; background: #d9a858; }
+    #rayhan-hero-directions .rd-prism { position: absolute; width: 118px; height: 118px; left: 50%; top: 50%; transform: translate(-50%, -50%) rotateX(58deg) rotateZ(28deg); border: 1px solid rgba(232,229,222,.72); background: linear-gradient(135deg, rgba(217,168,88,.35), rgba(83,220,195,.16) 55%, rgba(232,229,222,.06)); box-shadow: 18px 22px 42px rgba(0,0,0,.47), inset 0 0 24px rgba(232,229,222,.09); }
+    #rayhan-hero-directions .rd-prism::before, #rayhan-hero-directions .rd-prism::after { content: ''; position: absolute; background: linear-gradient(135deg, rgba(83,220,195,.28), rgba(10,12,13,.08)); border: 1px solid rgba(83,220,195,.5); }
+    #rayhan-hero-directions .rd-prism::before { width: 118px; height: 46px; left: 17px; top: -47px; transform: skewX(-45deg); transform-origin: bottom left; }
+    #rayhan-hero-directions .rd-prism::after { width: 46px; height: 118px; right: -47px; top: -17px; transform: skewY(-45deg); transform-origin: bottom left; }
+    #rayhan-hero-directions .rd-code { position: absolute; top: 50%; left: 50%; transform: translate(-54%, -49%) rotateX(58deg) rotateZ(28deg); color: #f0deb9; font: 500 9px/1.7 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .06em; }
+    #rayhan-hero-directions .rd-chip { position: absolute; padding: 6px 8px; border: 1px solid rgba(232,229,222,.26); border-radius: 999px; background: rgba(10,12,13,.72); color: #d3d0c8; font: 500 9px/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    #rayhan-hero-directions .rd-chip-one { top: 25px; left: 22px; } #rayhan-hero-directions .rd-chip-two { right: 17px; bottom: 26px; color: #71dbcc; }
+    @media (max-width: 650px) { #rayhan-hero-directions .rd-grid { grid-template-columns: 1fr; } #rayhan-hero-directions .rd-preview { min-height: 174px; } }
+  </style>
+  <p class="rd-kicker">Hero visual language</p>
+  <h2>Which 3D direction feels like Rayhan?</h2>
+  <p class="rd-sub">Select one. Recommendation: Code-to-Product Prism.</p>
+  <div class="rd-grid">
+    <button type="button" class="rd-card" data-choice="layered-product-system" onclick="toggleSelect(this)" aria-label="Choose Layered Product System">
+      <div class="rd-preview"><div class="rd-a-glow"></div><div class="rd-a-stage"><div class="rd-a-layer"><span>INTERFACE</span></div><div class="rd-a-layer"><span>API</span></div><div class="rd-a-layer"><span>DATA</span></div></div></div>
+      <div class="rd-card-body"><div class="rd-name">Layered Product System <span class="rd-tag">Safe</span></div><p>Refines current stack into meaningful product layers.</p></div>
+    </button>
+    <button type="button" class="rd-card" data-choice="orbiting-monogram" onclick="toggleSelect(this)" aria-label="Choose Orbiting Monogram">
+      <div class="rd-preview"><div class="rd-b-glow"></div><div class="rd-orbit"></div><div class="rd-monogram">R</div><div class="rd-orbit-label">BUILD · LEARN · SHIP</div></div>
+      <div class="rd-card-body"><div class="rd-name">Orbiting Monogram <span class="rd-tag">Personal</span></div><p>Signature-led hero with clear individual identity.</p></div>
+    </button>
+    <button type="button" class="rd-card" data-choice="code-to-product-prism" onclick="toggleSelect(this)" aria-label="Choose Code-to-Product Prism">
+      <div class="rd-preview"><div class="rd-c-glow"></div><div class="rd-prism"></div><div class="rd-code">&lt;/&gt;<br>BUILD<br>SHIP</div><span class="rd-chip rd-chip-one">REACT</span><span class="rd-chip rd-chip-two">NODE</span></div>
+      <div class="rd-card-body"><div class="rd-name">Code-to-Product Prism <span class="rd-tag">Recommended</span></div><p>Turns code into a premium product artifact. Strongest full-stack story.</p></div>
+    </button>
+  </div>
+</div>
