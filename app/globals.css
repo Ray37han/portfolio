@@ -1014,35 +1014,104 @@ dialog::backdrop {
     font: 500 13px/1 var(--mono);
   }
   .mobile-panel button { color: var(--accent); }
-  .hero-grid, .story-layout, .contact-panel { grid-template-columns: 1fr; }
-  .hero { padding-top: 118px; }
-  .hero-visual { min-height: 375px; order: -1; margin-top: -35px; }
+
+  /* Hero stacks: avatar on top, copy below */
+  .hero-grid { grid-template-columns: 1fr; gap: 0; }
+  .hero { padding-top: 100px; padding-bottom: 60px; min-height: auto; }
+  .hero-visual { min-height: 320px; order: -1; margin-top: 0; margin-bottom: 12px; }
   .visual-label { bottom: 5px; }
   .scroll-hint { display: none; }
+
+  /* Avatar: scale down for tablet */
+  .hero-avatar { width: 220px; height: 250px; }
+  .hero-avatar-ring { width: 260px; height: 292px; }
+  .hero-avatar-ring--2 { width: 310px; height: 342px; }
+  .hero-avatar-badge { right: -8px; bottom: -14px; font-size: 10px; padding: 5px 10px 5px 8px; }
+
+  .story-layout { grid-template-columns: 1fr; }
   .story-sticky { position: static; }
+  .contact-panel { grid-template-columns: 1fr; }
   .section-head { grid-template-columns: 1fr; gap: 18px; margin-bottom: 38px; }
   .capability:nth-child(n) { grid-column: span 6; }
   .project-card { grid-template-columns: 46px 1fr auto; gap: 15px; }
   .project-summary { grid-column: 2 / -1; }
+
+  /* Dialog device stage */
+  .dialog-device-stage { padding: 24px 16px; }
+  .device-frame.desktop { width: 100%; max-width: 300px; height: 185px; }
 }
 
 /* ─── Responsive: 620px ──────────────────────────────────── */
 @media (max-width: 620px) {
   .wrap { width: min(100% - 34px, 1160px); }
-  .hero h1 { font-size: clamp(3.15rem, 16vw, 4.8rem); }
-  .hero-visual { min-height: 327px; margin-top: -18px; }
-  .hero-meta { gap: 12px 17px; margin-top: 37px; }
+  .hero { padding-top: 88px; }
+  .hero h1 { font-size: clamp(2.8rem, 13vw, 4.2rem); }
+  .hero-lede { font-size: clamp(.95rem, 3.5vw, 1.1rem); max-width: 100%; }
+  .hero-visual { min-height: 280px; }
+  .hero-meta { gap: 10px 14px; margin-top: 28px; font-size: 9px; }
+
+  /* Avatar shrinks for phones */
+  .hero-avatar { width: 175px; height: 200px; }
+  .hero-avatar-ring { width: 205px; height: 232px; }
+  .hero-avatar-ring--2 { width: 248px; height: 278px; }
+  .hero-avatar-badge {
+    right: 0;
+    bottom: -12px;
+    font-size: 9px;
+    padding: 4px 9px 4px 7px;
+    gap: 5px;
+  }
+  .badge-dot { width: 6px; height: 6px; }
+
+  /* Buttons wrap properly */
+  .hero-actions { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .hero-actions .button { width: 100%; justify-content: center; }
+
   .capability:nth-child(n) { grid-column: span 12; min-height: 215px; }
   .project-card { grid-template-columns: 38px minmax(0, 1fr) 39px; padding: 21px 16px; }
-  .project-name { font-size: 1.75rem; }
+  .project-name { font-size: 1.5rem; }
   .project-summary { font-size: .86rem; }
-  .dialog-inner { padding: 23px; }
+
+  /* Dialog */
+  .dialog-inner { padding: 20px 16px; }
   .dialog-flow { grid-template-columns: 1fr; }
   .flow-node { min-height: 72px; }
   .flow-node strong { margin-top: 12px; }
-  .contact-panel { padding: 30px 22px; border-radius: 23px; gap: 34px; }
+  .device-toggle { gap: 6px; }
+  .device-toggle button { padding: 6px 10px; font-size: 10px; }
+  .device-frame.desktop { width: min(100%, 280px); height: 175px; border-radius: 8px; }
+  .device-frame.tablet  { width: 160px; height: 220px; }
+  .device-frame.phone   { width: 110px; height: 200px; }
+  .chip { font-size: .72rem; padding: 4px 10px; }
+  .chip-row { gap: 6px; }
+
+  /* Contact */
+  .contact-panel { padding: 28px 18px; border-radius: 20px; gap: 28px; }
+  .contact-form-wrapper { grid-template-columns: 1fr; }
+
+  /* Footer */
   .site-footer { display: block; }
   .site-footer span + span { display: block; margin-top: 8px; }
+
+  /* Section heads */
+  .section-title { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+  .section-label { font-size: 9px; }
+}
+
+/* ─── Responsive: 390px (small phones) ──────────────────── */
+@media (max-width: 390px) {
+  .hero-avatar { width: 150px; height: 172px; }
+  .hero-avatar-ring { width: 178px; height: 202px; }
+  .hero-avatar-ring--2 { display: none; } /* hide outermost ring on tiny screens */
+  .hero-avatar-badge {
+    right: 4px;
+    bottom: -10px;
+    font-size: 8px;
+    padding: 3px 7px 3px 6px;
+  }
+  .hero h1 { font-size: clamp(2.4rem, 12vw, 3.5rem); }
+  .project-name { font-size: 1.3rem; }
+  .dialog-inner { padding: 16px 12px; }
 }
 
 /* ─── Reduced Motion ─────────────────────────────────────── */
