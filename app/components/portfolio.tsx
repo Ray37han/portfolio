@@ -785,12 +785,13 @@ function AnimatedCount({ target, dec }: { target: number; dec: boolean }) {
   useEffect(() => {
     if (!triggered) return;
     const el = ref.current; if (!el) return;
+    const span = el; // capture non-null for closure
     const dur = 1500, start = performance.now();
     function ease(t: number) { return 1 - Math.pow(1 - t, 3); }
     function step(now: number) {
       const p = Math.min(1, (now - start) / dur);
       const v = ease(p) * target;
-      el.textContent = dec ? v.toFixed(1) : Math.round(v).toString();
+      span.textContent = dec ? v.toFixed(1) : Math.round(v).toString();
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
